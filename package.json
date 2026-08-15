@@ -1,0 +1,46 @@
+{
+  "name": "@topdaily-dev/shipkit",
+  "version": "0.1.0",
+  "description": "Ship OSS releases safely — preflight checks, changelog, GitHub release, and npm publish in one command",
+  "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
+  "bin": {
+    "shipkit": "bin/shipkit.mjs"
+  },
+  "files": [
+    "bin",
+    "lib",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test lib/*.test.mjs",
+    "prepublishOnly": "npm test"
+  },
+  "keywords": [
+    "release",
+    "changelog",
+    "npm",
+    "github",
+    "semver",
+    "conventional-commits",
+    "cli",
+    "developer-tools",
+    "open-source"
+  ],
+  "license": "MIT",
+  "author": "TopDaily Dev",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/topdaily-dev/shipkit.git"
+  },
+  "homepage": "https://www.npmjs.com/package/@topdaily-dev/shipkit",
+  "bugs": {
+    "url": "https://github.com/topdaily-dev/shipkit/issues"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
