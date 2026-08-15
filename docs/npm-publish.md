@@ -1,24 +1,31 @@
 # npm publish setup
 
-shipkit uses **npm trusted publishing** (OIDC) from GitHub Actions — same as collab-kit.
+shipkit uses **npm trusted publishing** (OIDC) from GitHub Actions.
 
-## One-time setup
+## One-time setup (topdaily-dev npm account)
 
-1. Sign in at [npmjs.com](https://www.npmjs.com/) as the `@korykaai` org owner
-2. Go to **Access** → **Publishing access** → **Trusted publishers**
-3. Add a trusted publisher:
-   - **Organization / user:** `kory-kaai`
-   - **Repository:** `shipkit`
+1. Sign in at [npmjs.com](https://www.npmjs.com/) as **topdaily-dev** (owner of the `@topdaily-dev` scope).
+2. **Access** → **Publishing access** → **Trusted publishers** → **Add**
+3. Configure:
+   - **Organization / user:** `topdaily-dev`
+   - **Repository:** `shipkit` (full path: `topdaily-dev/shipkit`)
    - **Workflow filename:** `publish-npm.yml`
-   - **Environment:** (leave empty unless you use one)
+   - **Environment:** leave empty unless you use GitHub Environments
+   - **Permissions:** `npm publish`
 
-4. Create the package entry (first publish establishes it):
-   ```bash
-   npm login
-   cd shipkit
-   npm publish --access public
-   ```
-   Or re-run the GitHub release workflow after trusted publishing is configured.
+### First publish (new package)
+
+OIDC cannot create a brand-new scoped package. Do **one** manual publish first:
+
+```bash
+npm login   # as topdaily-dev (+ 2FA if enabled)
+git clone https://github.com/topdaily-dev/shipkit.git
+cd shipkit
+npm test
+npm publish --access public --provenance
+```
+
+After that, GitHub Actions owns subsequent releases via trusted publishing.
 
 ## Verify
 
@@ -27,12 +34,14 @@ npm view @topdaily-dev/shipkit version
 npx @topdaily-dev/shipkit --help
 ```
 
-## Re-publish after setup
+## CI publish
 
-Re-run the failed workflow or create a patch release:
+Automatic on GitHub **Release published**, or manually:
 
 ```bash
-gh workflow run publish-npm.yml -R topdaily-dev/shipkit
+gh workflow run "Publish to npm" --repo topdaily-dev/shipkit
 ```
 
-Or bump to `0.1.1` and create a new GitHub release.
+## Migrating from @korykaai/shipkit
+
+The old package [`@korykaai/shipkit`](https://www.npmjs.com/package/@korykaai/shipkit) is deprecated in favor of `@topdaily-dev/shipkit`. Canonical repo: [topdaily-dev/shipkit](https://github.com/topdaily-dev/shipkit).
