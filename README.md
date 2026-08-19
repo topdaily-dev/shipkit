@@ -82,10 +82,13 @@ shipkit release --patch --skip-tests
 ## Pair with collab-kit
 
 ```bash
-npx @korykaai/collab-kit init .
+npx @korykaai/collab-kit init . --oss-toolchain
+collab-kit enable-hooks .
 # ... build your project ...
 npx @topdaily-dev/shipkit ship --minor --yes
 ```
+
+See [collab-kit oss-toolchain](https://github.com/kory-kaai/collab-kit/blob/main/examples/oss-toolchain.md).
 
 ## Requirements
 
