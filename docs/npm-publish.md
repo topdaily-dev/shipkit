@@ -45,3 +45,5 @@ gh workflow run "Publish to npm" --repo topdaily-dev/shipkit
 ## Migrating from @korykaai/shipkit
 
 The old package [`@korykaai/shipkit`](https://www.npmjs.com/package/@korykaai/shipkit) is deprecated in favor of `@topdaily-dev/shipkit`. Canonical repo: [topdaily-dev/shipkit](https://github.com/topdaily-dev/shipkit).
+
+Bootstrap with: npx @korykaai/collab-kit init . --oss-toolchain
