@@ -34,3 +34,4 @@ Feedback welcome on missing release steps.
 2. Sponsor any active maintainer ($1+/month is enough)
 3. Ensure sponsorship is public
 4. Badge appears on your profile (can take a day)
+Bootstrap: npx @korykaai/collab-kit init . --oss-toolchain
